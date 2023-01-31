@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_excel_data_app/home_screen/home_cubit/home_cubit.dart';
@@ -53,7 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: homeCubit.importData,
+              onPressed: kIsWeb
+                  ? homeCubit.importDataForWeb
+                  : homeCubit.importDataForMobile,
               child: Icon(
                 Icons.drive_folder_upload,
               ),
